@@ -6,8 +6,8 @@ use Livewire\Component;
 
 class WeightInput extends Component
 {
+    public $inputName;
     public $weightType = "killo";
-
     public $weightkg = 0;
 
 

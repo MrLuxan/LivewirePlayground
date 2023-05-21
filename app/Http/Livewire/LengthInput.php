@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class LengthInput extends Component
 {
+    public $inputName;
     public $lengthType = "meter";
     public $length = 0;
 

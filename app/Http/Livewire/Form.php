@@ -9,33 +9,29 @@ use App\Models\testMatt;
 class Form extends Component
 {
     protected $listeners = ['SubmitOne','SubmitTwo'];
+    public $step = 0;
 
-    public $test = "TEST!!";
-    public $kTest = "mmm";
+    public $rules1 = [
+        'fname' => 'required|min:6',
+        'lname' => 'required|min:6',
+    ];     
 
+    public $rules2 = [
+        'userHeight' => 'digits_between:2,5',
+        'userHeight' => 'numeric|min:2'];
 
-    public function mount()
+    public function SubmitOne($validatorPassed)
     {
-    }
-
-    public function SubmitOne($test)
-    {
-        //dd('SubmitOne' , $test);
-
-        $rules = [
-            'fname' => 'required|min:6',
-            'lname' => 'required|min:6',
-        ];
-
-        $validator = Validator::make($test, $rules);
-
-        dd($validator->passes(), $validator->messages()->toArray());
-
+        if($validatorPassed)
+        {
+            $this->step = 1;
+        }
     }
 
     public function SubmitTwo($test)
     {        
-        dd('SubmitTwo' , $test);
+        //dd('SubmitTwo' , $test);
+        $this->step = 2;
     }
 
     public function render()
